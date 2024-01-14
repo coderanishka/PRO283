@@ -1,0 +1,115 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.19393396889042447 0.29146603959848866 -0.9367161595014681 1.235231056738047
+  position -2.864189402284063 8.71780948641906 3.7801857252580904
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 5 5
+  floorTileSize 2 2
+  wallHeight 0.25
+}
+DEF Ramp Solid {
+  translation 0.725789 0.02 0.655337
+  rotation 0 1 0 -0.261795307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.666667 0.537255 0.0196078
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 5 1 0.02
+      }
+    }
+  ]
+}
+Robot {
+  translation 2.53 0.059999 1.44
+  rotation 1 0 0 1.5708
+  children [
+    DEF right_wheel HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        DEF right_position_sensor PositionSensor {
+        }
+        DEF right_rotational_motor RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 -0.35
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 0.192157 0.65098
+              roughness 0.7
+              metalness 0.3
+            }
+            geometry Cylinder {
+              height 0.1
+              radius 0.275
+            }
+          }
+        ]
+      }
+    }
+    DEF left_wheel HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        DEF leftt_position_sensor PositionSensor {
+        }
+        DEF left_rotational_motor RotationalMotor {
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.33
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 0.192157 0.65098
+              roughness 0.7
+              metalness 0.3
+            }
+            geometry Cylinder {
+              height 0.1
+              radius 0.275
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    Accelerometer {
+    }
+    DistanceSensor {
+    }
+    DEF body Transform {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.333333 1 1
+            roughness 0.5
+            metalness 0.25
+          }
+          geometry Capsule {
+            height 0.42
+            radius 0.25
+          }
+        }
+      ]
+    }
+  ]
+}
